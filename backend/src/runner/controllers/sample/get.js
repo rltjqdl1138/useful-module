@@ -1,10 +1,10 @@
-import { METHOD_DELETE } from '../controller';
+import { METHOD_GET } from '@runner/controller';
 export const tags = ['Sample'];
-export const summary = 'Delete';
+export const summary = 'Read';
 
 export const request = {
   path: '/sample',
-  method: METHOD_DELETE,
+  method: METHOD_GET,
 };
 
 export const security = ['user','client'];

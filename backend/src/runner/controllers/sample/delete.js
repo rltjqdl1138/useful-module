@@ -1,17 +1,16 @@
-import { METHOD_POST } from '../controller';
+import { METHOD_DELETE } from '@runner/controller';
 export const tags = ['Sample'];
-export const summary = 'Create';
+export const summary = 'Delete';
 
 export const request = {
   path: '/sample',
-  method: METHOD_POST,
+  method: METHOD_DELETE,
 };
 
 export const security = ['user','client'];
 export const params = {
     path: {},
     query: {},
-    body: {}
 };
 
 export const execute = async ({ params, client, user }) => {

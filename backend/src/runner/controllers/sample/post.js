@@ -1,16 +1,17 @@
-import { METHOD_GET } from '../controller';
+import { METHOD_POST } from '@runner/controller';
 export const tags = ['Sample'];
-export const summary = 'Read';
+export const summary = 'Create';
 
 export const request = {
   path: '/sample',
-  method: METHOD_GET,
+  method: METHOD_POST,
 };
 
 export const security = ['user','client'];
 export const params = {
     path: {},
     query: {},
+    body: {}
 };
 
 export const execute = async ({ params, client, user }) => {

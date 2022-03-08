@@ -1,4 +1,4 @@
-import { METHOD_PUT } from '../controller';
+import { METHOD_PUT } from '@runner/controller';
 export const tags = ['Sample'];
 export const summary = 'Update';
 

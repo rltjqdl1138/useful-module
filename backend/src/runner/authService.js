@@ -50,7 +50,7 @@ passport.use('jwt', new JwtStrategy(jwt_config, jwt_callback));
 export const verifyClient = async(payload) =>{
     const apiKey = payload['api-key']
     const clientID = payload['client-id']
-    const client = await clientDto.getClient(clientID)
+    const client = null // await clientDto.getClient(clientID)
     if(!client) return;
     const cryptoKey = await createPassword(client.password, clientID)
     return cryptoKey === apiKey ? client : undefined

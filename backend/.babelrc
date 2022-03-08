@@ -13,33 +13,28 @@
                         "rootPathSuffix": "./config",
                         "rootPathPrefix": "@config/"
                     },
+                    
                     {
-                        "rootPathSuffix": "./assets",
-                        "rootPathPrefix": "@assets/"
+                        "rootPathSuffix": "./src/runner",
+                        "rootPathPrefix": "@runner/"
                     },
                     {
-                        "rootPathSuffix": "./src/common",
-                        "rootPathPrefix": "@common/"
-                    },
-                    {
-                        "rootPathSuffix": "./src/models",
-                        "rootPathPrefix": "@models/"
-                    },
-                    {
-                        "rootPathSuffix": "./src/controllers",
-                        "rootPathPrefix": "@controllers/"
-                    },
-                    {
-                        "rootPathSuffix": "./src/lib",
-                        "rootPathPrefix": "@lib/"
-                    },
-                    {
-                        "rootPathSuffix": "./src/services",
+                        "rootPathSuffix": "./src/runner/services",
                         "rootPathPrefix": "@services/"
                     },
                     {
-                        "rootPathSuffix": "./src/vo",
+                        "rootPathSuffix": "./src/runner/vo",
                         "rootPathPrefix": "@vo/"
+                    },
+
+                    
+                    {
+                        "rootPathSuffix": "./src/OrientDB",
+                        "rootPathPrefix": "@orientdb/"
+                    },
+                    {
+                        "rootPathSuffix": "./src/OrientDB/models",
+                        "rootPathPrefix": "@models/"
                     }
                 ]
             }
