@@ -1,0 +1,39 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "set NODE_ENV=local&nodemon --ignore './logs/' --exec npx babel-node src/index.js",
+    "build": "babel -d dist src"
+  },
+  "author": "Kim kiseop",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/node": "^7.16.8",
+    "@babel/plugin-proposal-decorators": "^7.17.2",
+    "@babel/plugin-proposal-optional-chaining": "^7.16.7",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.16.11"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
+    "axios": "^0.26.0",
+    "babel-plugin-root-import": "^6.6.0",
+    "babel-plugin-wildcard": "^7.0.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "eth-sig-util": "^3.0.1",
+    "ethereumjs-util": "^7.1.4",
+    "express": "^4.17.3",
+    "mysql": "^2.18.1",
+    "node-fetch": "2.0",
+    "orientjs": "^3.0.11",
+    "passport": "^0.5.2",
+    "passport-jwt": "^4.0.0",
+    "swagger-ui-express": "^4.3.0"
+  }
+}
