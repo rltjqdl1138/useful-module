@@ -41,6 +41,16 @@
                     {
                         "rootPathSuffix": "./src/NaverCloud",
                         "rootPathPrefix": "@ncloud/"
+                    },
+
+                    
+                    {
+                        "rootPathSuffix": "./src/AWS",
+                        "rootPathPrefix": "@AWS/"
+                    },
+                    {
+                        "rootPathSuffix": "./src/CDN",
+                        "rootPathPrefix": "@CDN/"
                     }
 
                 ]

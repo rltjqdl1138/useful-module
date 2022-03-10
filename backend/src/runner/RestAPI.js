@@ -3,6 +3,8 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser'
 import passport from 'passport';
 import fs from 'fs'
+
+import imageRouter from '@CDN/ImageRouter'
 import getRoute from './controller';
 import swaggerHandler from './swagger';
 
@@ -29,7 +31,7 @@ const appRun = async () => {
 
 
 
-
+    app.use('/image', imageRouter)
     app.use('/v1', controllers.router);
 
     app.use('/',(req, res, next) => {
