@@ -105,4 +105,5 @@ dist
 
 !**/config/
 **/config/*
+!**/config/index.js
 !**/config/sample/

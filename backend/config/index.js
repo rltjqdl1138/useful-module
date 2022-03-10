@@ -1,0 +1,9 @@
+//const ROOT_CONFIG = './sample/'
+const ROOT_CONFIG = './local/'
+export const swaggerData =  require(ROOT_CONFIG+'swagger-data.json')
+export const serverData =   require(ROOT_CONFIG+'/server.json')
+export const authData =     require(ROOT_CONFIG+'/authentication.json')
+export const iamportData =  require(ROOT_CONFIG+'./iamport.json')
+export const NCloudData =   require(ROOT_CONFIG+'/naver-cloud-platform.json')
+export const orientDBData = require(ROOT_CONFIG+'/orientdb.json')
+export const bucketData =   require(ROOT_CONFIG+'/aws-bucket.json')
