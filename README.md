@@ -221,6 +221,9 @@ await orientdb.GetItem('account', null, "nickname='kks'" )
 
 #### 4) List many item
 
+```
+```
+
 #### 5) Create item
 
 ```
@@ -233,6 +236,9 @@ await orientdb.RegisterItem('account', attrs)
 ```
 
 #### 6) Update item
+
+```
+```
 
 #### 7) Delete item
 
