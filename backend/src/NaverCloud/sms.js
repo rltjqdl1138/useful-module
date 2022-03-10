@@ -59,7 +59,7 @@ class MessageService {
         // * Coordinated Universal Time (UTC+0)
         const timestamp = Date.now()
 
-        const signature = await this._createSignature('POST', timestamp, this.url )
+        const signature = this._createSignature('POST', timestamp, this.url )
         const header = {
             'Content-Type':'application/json',
             'x-ncp-apigw-timestamp':timestamp,
@@ -96,7 +96,7 @@ class MessageService {
             if(this.disableMessage)
                 this.log(`[Test] Send Authentication message: ${mobile} ${key}`)
 
-            return true
+            return key
         }catch(e){
             console.log(e.response && e.response.data ? e.response.data : e)
             return false
@@ -112,7 +112,7 @@ class MessageService {
         console.log(`[NCloud] [SMS] ${str}`)
     }
     
-    async _createSignature(method, _timestamp, url){
+    _createSignature(method, _timestamp, url){
         const timestamp = typeof _timestamp === 'string' ? _timestamp : String(_timestamp)
         return crypto.createHmac('sha256', this.secretKey)
             .update(method).update(" ")
