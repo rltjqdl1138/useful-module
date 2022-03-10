@@ -6,7 +6,7 @@ import { NCloudData } from '@config/'
 /*
  * @class   MessageService
  * @brief   For Authentication using Message, Access to <Simple & Easy Notification Service> on <Naver Cloud Platform>
- * @author  Earthy Inc, Kim ki seop
+ * @author  Kim ki seop
  * 
  * @Method  SendMessage
  *      @description    Send Plain Message
