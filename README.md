@@ -1,13 +1,13 @@
 # useful-module
 Modularized codes for Node js &amp; React js
 
-## Runner
+## 1. Runner
 
-### Rest API
+### 1.1 Rest API
 
 Rest API in express
 
-#### 1. Controller
+#### 1) Controller
 
 ##### controller sample
 ```
@@ -33,7 +33,7 @@ export const execute = async ({ params, client, user }) => {
 export default execute;
 ```
 
-#### 2. Swagger
+#### 2) Swagger
 
 @runner/controller.js make data for "api-docs" and "swagger-ui"
 
@@ -41,7 +41,7 @@ export default execute;
 
 http://3.36.51.123/swagger-ui.html
 
-#### 3. Pagination
+#### 3) Pagination
 
 every api have same request and response structure
 It is in object "pagingRequestDto" and parsing function "pagingResponseParse"
@@ -101,16 +101,16 @@ http://<URL+Path>?page=5&limit=10&sort=created_at&order=desc
 ```
 
 
-### CDN
+### 1.2 CDN
 
-#### 4. Image Router
+#### 4) Image Router
 
 ```
 import imageRouter from '@CDN/ImageRouter'
 app.use('/image', imageRouter)
 ```
 
-## AWS
+## 2. AWS
 
 ### Bucket
 
@@ -120,15 +120,15 @@ app.use('/image', imageRouter)
 
 https://minisp.tistory.com/6
 
-## Naver Cloud
+## 3. Naver Cloud
 
 https://www.ncloud.com/
 
-### SMS Service
+### 3.1 SMS Service
 
 https://console.ncloud.com/sens
 
-#### Send authentication message
+#### 1) Send authentication message
 ```
 import smsService from '@ncloud/sms'
 
@@ -136,7 +136,7 @@ const mobile = "<Mobile>"
 const countryCode = "<CountryCode>"
 const key = await smsService.SendAuthenticationMessage(mobile, countryCode)
 ```
-#### Send plain message
+#### 2) Send plain message
 ```
 import smsService from '@ncloud/sms'
 
@@ -146,7 +146,7 @@ const context = "This prayer has been sent to you for good luck. The original co
 await smsService.sendMessage(context, mobile, countryCode)
 ```
 
-#### Check authentication message
+#### 3) Check authentication message
 ```
 import smsService from '@ncloud/sms'
 
@@ -157,20 +157,20 @@ const isCorrect = await smsService.CheckKey(mobile, countryCode, Key)
 ```
 
 
-### Geocode Service
+### 3.2 Geocode Service
 
 https://console.ncloud.com/naver-service/application
 
 https://api.ncloud-docs.com/docs/ai-naver-mapsgeocoding
 
 
-## OrientDB
+## 4. OrientDB
 
 http://orientdb.com/docs/3.0.x/orientjs/OrientJS.html
 
-### Model
+### 4.1 Model
 
-#### definition
+#### 1) definition
 
 ```
 // account model
@@ -194,7 +194,7 @@ export default{
 }
 ```
 
-#### point
+#### 2) point
 
 - If schema is not exist, but model file is exist. Automatically create it.
 - If schema is exist, but model file is not exist. Automatically delete it.
@@ -202,9 +202,9 @@ export default{
 - If property is exist, but model file doesn't have it. Automatically delete it.
 - Id property is increasing automatically
 
-### Simple Query
+### 4.2 Simple Query
 
-#### Get one item
+#### 3) Get one item
 
 ```
 import orientdb from "@orientdb/"
@@ -219,7 +219,9 @@ await orientdb.GetItem('account', null, id )
 await orientdb.GetItem('account', null, "nickname='kks'" )
 ```
 
-#### Create item
+#### 4) List many item
+
+#### 5) Create item
 
 ```
 attrs = {
@@ -230,14 +232,34 @@ attrs = {
 await orientdb.RegisterItem('account', attrs)
 ```
 
-#### Update item
+#### 6) Update item
 
-#### Delete item
+#### 7) Delete item
 
 ````
 // Delete item by id
 await orientdb.DeleteItem('account', id)
 ````
 
-### Graph Query
+### 4.3 Graph Query
 
+#### 8) Simple list
+```
+import orientdb from "@orientdb/"
+
+Model1 = {
+
+}
+Model2 = {
+
+}
+Model3 = {
+
+}
+await orientdb.graphQuery( Model1 )
+```
+
+#### 9) List with edge
+```
+
+```
