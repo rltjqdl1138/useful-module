@@ -13,12 +13,9 @@ Router.get('/*', (req,res)=>{
 
 Router.post('/',function(req, res){
     const form = new multiparty.Form()
-    // Error handling
-    form.on('error', err=> res.status(500).end() )
     // form data
-    form.on('part', function(part){
-        if(!part.filename)
-            return part.resume()
+    form.on('part',(part)=>{
+        if(!part.filename) return part.resume()
 
         const filename = part.filename
         const pathname = `${ROOT}/raw/${filename}`
@@ -28,8 +25,11 @@ Router.post('/',function(req, res){
             .then( image => processImage(image, filename, processFunctions) )
 
     })
+    // Error handling
+    form.on('error', err=> res.status(500).end() )
     // close form
     form.on('close',()=> res.end() )
+
     form.parse(req)
 })
 

@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser'
 import passport from 'passport';
-import fs from 'fs'
 
 import imageRouter from '@CDN/ImageRouter'
 import getRoute from './controller';
