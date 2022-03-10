@@ -3,7 +3,7 @@ module.exports = {
   apps: [
     {
       name: 'backend',
-      script: './dist/www.js',
+      script: './dist/index.js',
       watch: false,
       ignore_watch: ['[/\\]./', 'node_modules', 'logs', 'public'],
       exec_mode: 'cluster',
