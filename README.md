@@ -1,6 +1,86 @@
 # useful-module
 Modularized codes for Node js &amp; React js
 
+
+## Contents
+#### 1. Runner
+##### 1.1 Rest API
+###### 1) Controller
+Controller for Restful API
+###### 2) Swagger
+Automade swagger page
+###### 3) Pagination
+Common structure for pagination
+##### 1.2 CDN
+###### 4) Image Router
+Controller for image upload / download
+##### 1.3 Babel
+###### babelrc.js
+###### run
+###### build
+
+##### 1.4 pm2
+###### ecosystem.config.js
+
+#####
+
+#### 2. Data
+##### 2.1 AWS Bucket
+###### 1) Bucket Setting
+AWS bucket setting
+
+##### 2.2 Inmemory cache
+
+##### 2.3 Redis
+
+##### 2.4 MQTT
+
+#### 3. Naver Cloud Platform
+##### 3.1 SMS Service
+###### 1) Send authentication message
+Send 6-digit authentication
+###### 2) Send plain message
+Send short sms ( 80byte limited )
+###### 3) Check authentication message
+Verify sms authentication message from 1) Send authentication message 
+##### 3.2 Geocode Service
+
+#### 4. OrientDB
+##### 4.1 Model
+###### 1) model definition
+Model structure for orientDB
+###### 2) point
+All classes are synchronized with model
+( Create / Drop class ), ( Create / Drop property )
+##### 4.2 Simple Query
+###### 3) Get one item
+###### 4) List many item
+###### 5) Create item
+###### 6) Update item
+###### 7) Delete item
+##### 4.3 Graph Query
+###### 8) Simple Query
+
+#### 5. Authentication
+##### 5.1 Original ( ID and password )
+##### 5.2 Facebook
+##### 5.3 Google
+##### 5.4 Apple
+##### 5.5 Kakao ( RestAPI )
+##### 5.6 Kakao ( Webpage )
+##### 5.7 Naver
+##### 5.8 Huawei
+##### 5.9 Metamask
+
+#### 6. Chatting ( socket.io )
+
+#### 7. Push notification
+
+#### 8. Import ( payment )
+
+#### 9. Clayful ( commerce )
+
+
 ## 1. Runner
 
 ### 1.1 Rest API
@@ -110,15 +190,36 @@ import imageRouter from '@CDN/ImageRouter'
 app.use('/image', imageRouter)
 ```
 
-## 2. AWS
+#### 5) Create SVG Image
+```
+```
+### 1.3 Babel
 
-### Bucket
+#### 6) babelrc.js
+#### 7) run
+#### 8) build
+
+### 1.4 pm2
+#### 9) ecosystem.config.js
+
+### 1.5 Scheduler
+#### 10) node-cron
+
+## 2. Data
+
+### 2.1 AWS Bucket
 
 #### Bucket setting
 
 ##### Guide
 
 https://minisp.tistory.com/6
+
+### 2.2 Inmemory cache
+
+### 2.3 Redis
+
+### 2.4 MQTT
 
 ## 3. Naver Cloud
 
@@ -269,3 +370,41 @@ await orientdb.graphQuery( Model1 )
 ```
 
 ```
+
+## 5. Authentication
+
+### 5.1 Original ( ID and password )
+```
+```
+### 5.2 Facebook
+```
+```
+### 5.3 Google
+```
+```
+### 5.4 Apple
+```
+```
+### 5.5 Kakao ( RestAPI )
+```
+```
+### 5.6 Kakao ( Webpage )
+```
+```
+### 5.7 Naver
+```
+```
+### 5.8 Huawei
+```
+```
+### 5.9 Metamask
+```
+```
+
+## 6. Chatting ( socket.io )
+
+## 7. Push notification
+
+## 8. Import ( payment )
+
+## 9. Clayful ( commerce )
