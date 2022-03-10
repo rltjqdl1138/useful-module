@@ -2,7 +2,6 @@ import fs from 'fs';
 import express from 'express';
 import passport from 'passport';
 import md5 from 'crypto-js/md5';
-import {verifyClient} from './authService'
 
 export const METHOD_GET = 'get';
 export const METHOD_POST = 'post';
@@ -11,8 +10,6 @@ export const METHOD_DELETE = 'delete';
 
 const definitions = {};
 const ADMIN_MASK = 1
-
-
 
 export const getRoute = async () => {
     const router = initializeRouter()
@@ -27,7 +24,6 @@ export const getRoute = async () => {
 
         pages.push(page)
         const route_uri = path.replace(/\{([a-zA-Z0-9\_]+)\}/g, ':$1');
-        router[method]( route_uri, clientAuthRouter)
         router[method]( route_uri, passportRouter,
             // execute
             async (req, res, next) => {
@@ -45,12 +41,11 @@ export const getRoute = async () => {
                     query:  req.query,
                     path:   req.params,
                     user:   req.user,
-                    client: req['open-client']
                 };
                 try {
                     // user role
                     const params = args.params;
-                    const {roles} = roleCheck(exec.security, req.user, req['open-client'])
+                    const {roles} = roleCheck(exec.security, req.user)
                     args.roles = roles
                    
                     // execute
@@ -75,6 +70,64 @@ export const getRoute = async () => {
     }
     return { router, pages, definitions };
 };
+
+export const pagingRequestDto = {
+    page: {
+        type: 'integer',
+        description: '페이지',
+    },
+    limit: {
+        type: 'integer',
+        description: '페이지당 사이즈',
+    },
+    sort: {
+        type: 'string',
+        description: '정렬필드',
+        enum:['created_at']
+    },
+    order: {
+        type: 'string',
+        description: '정렬방식',
+        enum: ['desc','asc']
+    },
+}
+
+export const pagingRequestParse = (params) => {
+    const page = parseInt(params?.page || '0');
+    const limit = parseInt(params?.limit || '30');
+    const sort = params?.sort || 'created_at';
+    const order = params?.order || 'desc';
+    return {page, limit, sort, order}
+}
+
+export const pagingResponseParse = (pageObject) => {
+    const {current, total, limit, sort, order } = pageObject
+    let prev_page = null
+    let next_page = null
+    let last_page = null
+    
+    if(typeof total === 'number'){
+        if(total === 0)
+            last_page = 0
+        else
+            last_page = Math.floor( (total-1)/limit )
+        prev_page = last_page >= current && current > 0 ? current - 1 : null
+        next_page = last_page <= current ? null : current + 1
+    }
+  
+    return {
+        firstPage:  0,
+        prevPage:   prev_page,
+        currentPage:current,
+        nextPage:   next_page,
+        lastPage:   last_page,
+        limit,
+        total:      total,
+        sort,
+        order
+    }
+}
+
 
 const initializeRouter = ()=>{
     const router = express.Router();
@@ -248,18 +301,11 @@ const passportRouter = (req, res, next) => {
         next();
     })(req, res, next);
 }
-const clientAuthRouter = async (req, res, next)=>{
-    req['open-client'] = await verifyClient(req.headers)
-    next()
-}
 
 const roleCheck = (security, user, client)=>{
     let success = false
     let roles = user ? ['user'] : ['guest']
     
-    if(client)
-        roles.push('client')
-        
     if(user?.role_byte & ADMIN_MASK)
         roles.push('admin')
         

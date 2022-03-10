@@ -24,6 +24,16 @@ https://console.ncloud.com/sens
 
 ### Geocode Service
 
+https://console.ncloud.com/naver-service/application
+
+https://api.ncloud-docs.com/docs/ai-naver-mapsgeocoding
 
 
 ## OrientDB
+
+### Model
+
+### Simple Query
+
+### Graph Query
+

@@ -1,10 +1,13 @@
 import passport from 'passport';
 import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
+import * as jwt from 'jsonwebtoken'
+
+import * as userDto from '@vo/userDto'
 import { authData } from '@config/';
-const PASSWORD = authData.JWTPassword
+const {JWTPassword} = authData
 
 /*
- * @ 1.3. Jwt callback function
+ * @ 1.1. Jwt callback function
  * @function jwt_callback
  *   @writer - Kim ki seop
  *   @description - Verify jwt token and get User data
@@ -16,42 +19,42 @@ const PASSWORD = authData.JWTPassword
 **/
 export const jwt_callback = async (payload, done) => {
     try{
-        const user = await userDto.getUserBySeq(payload.seq)
+        const user = await userDto.GetItem(payload.id)
 
         // Case 1: User is not exist
         if(!user) return done({  })
     
         // Case 2: Token is expired
-        //const expireDate = Math.floor(user.expired_at / 1000)
-        //if(payload.iat < expireDate){
-        //    return done({ message: 'Expired jwt' })
-        //}
+        const expireDate = Math.floor(user.expired_at / 1000)
+        if(payload.iat < expireDate)
+            return done({ message: 'Expired jwt' })
+        
         // Case 3: Success
         done(null, user)
     }catch(e){
-        console.log(e)
         // Case 4: Trouble in loading data
+        console.log(e)
         done(e)
     }
 }
-
 /*
- * @ 1.4. PassportSetting
+ * @ 1.2. PassportSetting
  *   @writer - Kim ki seop
  *   @description - Set passport setting ( Bearer, JWT callback )
 **/
 export const jwt_config = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey:    PASSWORD,
+    secretOrKey:    JWTPassword,
 };
 passport.use('jwt', new JwtStrategy(jwt_config, jwt_callback));
 
+export const signJWT = (id)=>{
+    const access_token = jwt.sign({token_type:'access_token', id}, JWTPassword, { expiresIn:'24h' });
+    const refresh_token =jwt.sign({token_type:'refresh_token',id}, JWTPassword);
 
-export const verifyClient = async(payload) =>{
-    const apiKey = payload['api-key']
-    const clientID = payload['client-id']
-    const client = null // await clientDto.getClient(clientID)
-    if(!client) return;
-    const cryptoKey = await createPassword(client.password, clientID)
-    return cryptoKey === apiKey ? client : undefined
+    return {
+        access_token,
+        refresh_token,
+        token_type: 'bearer',
+    }
 }

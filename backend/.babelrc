@@ -27,6 +27,10 @@
                         "rootPathPrefix": "@vo/"
                     },
 
+                    {
+                        "rootPathSuffix": "./src/Authentication",
+                        "rootPathPrefix": "@auth/"
+                    },
                     
                     {
                         "rootPathSuffix": "./src/OrientDB",

@@ -29,46 +29,16 @@ const appRun = async () => {
         next();
     });
 
-
-
     app.use('/image', imageRouter)
-    app.use('/v1', controllers.router);
+    app.use('/v1', controllers.router)
 
-    app.use('/',(req, res, next) => {
-        let filename = __dirname + "/../public" + req.url
-        const parsedUrl = req.url.split(".")
-        const extend = parsedUrl[parsedUrl.length-1]
-        try{
-            switch(extend){
-                case 'js':
-                    res.setHeader('Content-Type',"text/javascript"); break;
-                case 'html':
-                    res.setHeader('Content-Type',"text/html"); break;
-                case 'css':
-                    res.setHeader('Content-Type',"text/css"); break;
-                case 'data':
-                case 'wasm':
-                    break;
-                default:
-                    res.setHeader('Content-Type',"text/html");
-                    filename = filename+".html"
-
-            }
-            res.send( fs.readFileSync(filename) )
-        }catch(e){
-            next()
-        }
-    });
-
-
-    
     const swagger = swaggerHandler(controllers);
     swagger.forEach( v => app.use(...v) )
 
-    app.use('/', (req, res) => {
+    app.get('/', (req, res) => {
         res.type('text/plain');
         res.status(200);
-        return res.send('Welcome to open-avatar');
+        return res.send('Welcome');
     });
 
     //커스텀 404 페이지
