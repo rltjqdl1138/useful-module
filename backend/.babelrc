@@ -35,7 +35,14 @@
                     {
                         "rootPathSuffix": "./src/OrientDB/models",
                         "rootPathPrefix": "@models/"
+                    },
+
+                    
+                    {
+                        "rootPathSuffix": "./src/NaverCloud",
+                        "rootPathPrefix": "@ncloud/"
                     }
+
                 ]
             }
         ]

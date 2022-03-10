@@ -1,0 +1,19 @@
+{
+    "common":{
+        "accessKey":"",
+        "secretKey":""
+    },
+    
+    "sms":{
+        "serviceID":"",
+        "callingNumber":"",
+        "disableMessage":true,
+        "exp":18000
+    },
+
+    "geocode":{
+        "app":"",
+        "clientID":"",
+        "clientSecret":""
+    }
+}
