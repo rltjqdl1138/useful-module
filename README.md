@@ -264,6 +264,119 @@ https://console.ncloud.com/naver-service/application
 
 https://api.ncloud-docs.com/docs/ai-naver-mapsgeocoding
 
+#### 4) Get address
+```
+import GeocodeService from '@ncloud/Geocode'
+
+await GeocodeService.get(126.97798167509505,37.56474939020642)
+```
+
+##### response
+```
+{
+    "status": {
+        "code": 0,
+        "name": "ok",
+        "message": "done"
+    },
+    "results": [
+        {
+            "name": "roadaddr",
+            "code": {
+                "id": "1114011400",
+                "type": "L",
+                "mappingId": "09140114"
+            },
+            "region": {
+                "area0": {
+                    "name": "kr",
+                    "coords": {
+                        "center": {
+                            "crs": "",
+                            "x": 0,
+                            "y": 0
+                        }
+                    }
+                },
+                "area1": {
+                    "name": "서울특별시",
+                    "coords": {
+                        "center": {
+                            "crs": "EPSG:4326",
+                            "x": 126.9783882,
+                            "y": 37.5666103
+                        }
+                    },
+                    "alias": "서울"
+                },
+                "area2": {
+                    "name": "중구",
+                    "coords": {
+                        "center": {
+                            "crs": "EPSG:4326",
+                            "x": 126.997602,
+                            "y": 37.563843
+                        }
+                    }
+                },
+                "area3": {
+                    "name": "태평로2가",
+                    "coords": {
+                        "center": {
+                            "crs": "EPSG:4326",
+                            "x": 126.9763563,
+                            "y": 37.5629892
+                        }
+                    }
+                },
+                "area4": {
+                    "name": "",
+                    "coords": {
+                        "center": {
+                            "crs": "",
+                            "x": 0,
+                            "y": 0
+                        }
+                    }
+                }
+            },
+            "land": {
+                "type": "",
+                "number1": "119",
+                "number2": "",
+                "addition0": {
+                    "type": "building",
+                    "value": "더 플라자"
+                },
+                "addition1": {
+                    "type": "zipcode",
+                    "value": "04525"
+                },
+                "addition2": {
+                    "type": "roadGroupCode",
+                    "value": "111403101004"
+                },
+                "addition3": {
+                    "type": "",
+                    "value": ""
+                },
+                "addition4": {
+                    "type": "",
+                    "value": ""
+                },
+                "name": "소공로",
+                "coords": {
+                    "center": {
+                        "crs": "",
+                        "x": 0,
+                        "y": 0
+                    }
+                }
+            }
+        }
+    ]
+}
+```
 
 ## 4. OrientDB
 

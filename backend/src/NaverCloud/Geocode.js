@@ -2,8 +2,8 @@ import axios from 'axios'
 import { NCloudData } from '@config/'
 
 /*
- * @class   MessageService
- * @brief   For Authentication using Message, Access to <Simple & Easy Notification Service> on <Naver Cloud Platform>
+ * @class   GeocodeService
+ * @brief   For 
  * @author  Kim ki seop
 **/
 class GeocodeService {
@@ -15,13 +15,12 @@ class GeocodeService {
         // Naver Cloud Platform URL
         this.baseURL = 'https://naveropenapi.apigw.ntruss.com'
         this.url = `/map-reversegeocode/v2/gc`
-
-        // Print Logs
-        this.log(`[init] Calling Number: \x1b[95m${number}\x1b[0m`)
     }
    
-    async get(x, y){
-        // * Context
+    async get(lng, lat, floor=4){
+        const x = lng.toFixed(floor)
+        const y = lat.toFixed(floor)
+        
         const url = `${this.baseURL}${this.url}?request=coordsToaddr&coords=${x},${y}&sourcecrs=epsg:4326&orders=roadaddr&output=json`
         // * Header
         const header = {
@@ -31,11 +30,15 @@ class GeocodeService {
         }
         
         try{
-            const result =  await axios.get(url, {headers:header})
-            return result.data
+            const {data} =  await axios.get(url, {headers:header})
+
+            if(data?.code === 0)
+                return data?.results
+
+            return undefined
         }catch(e){
             console.log(e.response && e.response.data ? e.response.data : e)
-            return false
+            return undefined
         }
     }
 
@@ -44,4 +47,4 @@ class GeocodeService {
     }
 }
 
-exports.GeocodeService = new GeocodeService()
+module.exports = new GeocodeService()

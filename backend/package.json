@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
+    "aws-sdk": "^2.1091.0",
     "axios": "^0.26.0",
     "babel-plugin-root-import": "^6.6.0",
     "babel-plugin-wildcard": "^7.0.0",
@@ -29,6 +30,7 @@
     "eth-sig-util": "^3.0.1",
     "ethereumjs-util": "^7.1.4",
     "express": "^4.17.3",
+    "multiparty": "^4.2.3",
     "mysql": "^2.18.1",
     "node-fetch": "2.0",
     "orientjs": "^3.0.11",
