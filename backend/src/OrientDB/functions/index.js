@@ -8,3 +8,4 @@ export const graphQuery = (model)=>{
 export const createQuery = temp.createQuery
 export const RegisterItem = temp.RegisterItem
 export const GetItem = temp.GetItem
+export const getList = temp.getList
